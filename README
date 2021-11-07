@@ -1,0 +1,33 @@
+=============================
+======= DESCRIPTION =========
+=============================
+
+This is my telegram bot!
+You can find it on t.me/what_should_I_wear_bot - look it up!
+
+The bot receives a location from the user (any telegram location),
+and replies what the user should wear based on their location.
+
+IMPORTANT NOTES:
+        - the api's used in this project are hidden on the bot.py file that on git git
+        - there are two more files for this project that aren't in this repo,
+          but necessary for the bot to operate on heroku's servers
+
+
+=============================
+======== DEVELOPMENT ========
+=============================
+
+I used python to develop this bot, mainly in pyTelegramBotAPI package and WeatherMapAPI.
+The script of this bot is deployed in heroku's servers.
+
+
+=============================
+========== COMMANDS =========
+=============================
+
+/start - starting the operation of the bot, and gives a bit of info about it
+/help - gives an explanation on how to operate this bot
+
+* location handler - the function that gets the location from the user and process it
+* reply - function that sends an error message for every input that the bot can't handle
