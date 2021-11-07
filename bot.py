@@ -2,8 +2,8 @@ import requests
 import math
 import telebot
 
-API_KEY = '2091899333:AAFjDGpIdmiXzMMvPxR62RLJconNM8eYzKQ'
-CURRENT_WEATHER_API_KEY = '460ea376c7acb48bab64b68e4633ed0f'
+API_KEY = 'HERE GOES MY TELEGRAM API TOKEN'
+CURRENT_WEATHER_API_KEY = 'HERE GOES MY WEATHERMAP API TOKEN'
 TYPES_LIST = ['text', 'audio', 'document', 'photo', 'sticker', 'video', 'location', 'contact']
 bot = telebot.TeleBot(API_KEY)
 
@@ -106,14 +106,7 @@ def handle_location(message):
         lat, lon = message.location.longitude, message.location.latitude
         weather = get_current_weather(CURRENT_WEATHER_API_KEY, lat, lon)
         what_to_wear_message = choose_clothes(weather) + "\n"
-
-        # the comment lines are an attempt to do chained messages. todo!
-        # additional_message = "for more information about the weather for " \
-        #                      "this location, type /weather"
         bot.send_message(message.chat.id, what_to_wear_message)
-        # bot.send_message(message.chat.id, additional_message)
-
-        # send_weather(message, weather)
 
 
 @bot.message_handler(commands=['weather'])
