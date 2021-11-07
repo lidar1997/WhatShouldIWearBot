@@ -109,14 +109,6 @@ def handle_location(message):
         bot.send_message(message.chat.id, what_to_wear_message)
 
 
-@bot.message_handler(commands=['weather'])
-def send_weather(message, weather):
-    cur_weather = f"current temperature is: {weather['temp']}\n" \
-                  f"weather actually feels like: {weather['feels_like']}\n" \
-                  f"the current state of the sky is: {weather['sky']}"
-    bot.send_message(message.chat.id, cur_weather)
-
-
 @bot.message_handler(content_types=TYPES_LIST)
 def reply(message):
     bot.reply_to(message, "I dont know what to do with that, type /help for "
