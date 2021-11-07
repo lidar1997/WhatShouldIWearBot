@@ -9,7 +9,7 @@ The bot receives a location from the user (any telegram location),
 and replies what the user should wear based on their location.
 
 IMPORTANT NOTES:
-        - the api's used in this project are hidden on the bot.py file that on git git
+        - telegram and weathermap tokens used in this project are hidden on the bot.py file that on git
         - there are two more files for this project that aren't in this repo,
           but necessary for the bot to operate on heroku's servers
 
