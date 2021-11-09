@@ -2,8 +2,8 @@ import requests
 import math
 import telebot
 
-API_KEY = 'HERE GOES MY TELEGRAM API TOKEN'
-CURRENT_WEATHER_API_KEY = 'HERE GOES MY WEATHERMAP API TOKEN'
+API_KEY = 'MY TELEGRAM API TOKEN GOES HERE'
+CURRENT_WEATHER_API_KEY = 'MY WEATHERMAP API TOKEN GOES HERE'
 TYPES_LIST = ['text', 'audio', 'document', 'photo', 'sticker', 'video', 'location', 'contact']
 bot = telebot.TeleBot(API_KEY)
 
@@ -66,6 +66,12 @@ def is_hot(weather):
 
 
 def choose_clothes(weather):
+    """
+    gets a dictionary of the weather, and returns the message for the user, based
+    on the weather
+    :param weather: dictionary of the weather, in the form of the dictionary in get_weather func
+    :return: the message for the user - what to wear
+    """
     if is_snowy(weather):
         return "It's  snowy! do you want to build a snowman?"
     elif is_cold_and_rainy(weather):
@@ -102,6 +108,11 @@ def help_user(message):
 
 @bot.message_handler(content_types=['location'])
 def handle_location(message):
+    """
+    gets the location from the user, and replies with the appropriate message
+    :param message: telegram message object
+    :return: None
+    """
     if message.location is not None:
         lat, lon = message.location.longitude, message.location.latitude
         weather = get_current_weather(CURRENT_WEATHER_API_KEY, lat, lon)
@@ -111,6 +122,11 @@ def handle_location(message):
 
 @bot.message_handler(content_types=TYPES_LIST)
 def reply(message):
+    """
+    the function to handle any type of data, other than the known commands
+    :param message: telegram message object
+    :return: None
+    """
     bot.reply_to(message, "I dont know what to do with that, type /help for "
                           "more info")
 
