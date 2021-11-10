@@ -46,23 +46,27 @@ def is_rainy(weather):
 
 
 def is_cold_and_rainy(weather):
-    return weather['sky'] == "Rain" and weather['temp'] <= 18
+    return weather['sky'] == "Rain" and weather['temp'] <= 16
 
 
 def is_freezy(weather):
-    return weather['temp'] < 10 or weather['feels_like'] < 10
+    return weather['temp'] < 8 or weather['feels_like'] < 8
 
 
 def is_cold(weather):
-    return 10 <= weather['temp'] <= 18 or 10 <= weather['feels_like'] <= 19
+    return 8 <= weather['temp'] <= 16 or 8 <= weather['feels_like'] <= 16
+
+
+def is_chilly(weather):
+    return 17 <= weather['temp'] <= 20 or 17 <= weather['feels_like'] <= 21
 
 
 def is_warm(weather):
-    return 18 < weather['temp'] < 26 or 19 < weather['feels_like'] < 24
+    return 21 < weather['temp'] < 26 or 21 < weather['feels_like'] < 25
 
 
 def is_hot(weather):
-    return weather['temp'] >= 26 or weather['feels_like'] >= 24
+    return weather['temp'] >= 26 or weather['feels_like'] >= 25
 
 
 def choose_clothes(weather):
@@ -72,6 +76,7 @@ def choose_clothes(weather):
     :param weather: dictionary of the weather, in the form of the dictionary in get_weather func
     :return: the message for the user - what to wear
     """
+
     if is_snowy(weather):
         return "It's  snowy! do you want to build a snowman?"
     elif is_cold_and_rainy(weather):
@@ -80,15 +85,19 @@ def choose_clothes(weather):
     elif is_freezy(weather):
         return "It's freezy out there, heavy coat with two layers minimum!"
     elif is_cold(weather):
-        return "Its cold outside, consider wear long shirt with sweater above"
+        return "Its really cold outside, consider wear a long shirt with a sweater above. " \
+               "If you tend to suffer from cold, consider wear extra layer"
+    elif is_chilly(weather):
+        return "I'd say it's a little bit chilly outside, long shirt will do. " \
+               "if you tend to suffer from cold weather, consider wear a light hoodie on top of it"
     elif is_warm(weather):
-        return "It's warm, wear a T-shirt!"
+        return "It's warm, pants and T-shirt will fit. if you tend to suffer from hot weather, " \
+               "consider even going with shorts!"
     elif is_hot(weather):
         return "It's hot outside, it's time for tank top and shorts!"
-    else:  # unhandled situation
+    else:  # unnecessary - temp check in prev funcs covers all options
         return "Undefined weather, consider wearing layers so you could " \
                "take them off if necessary"
-
 
 @bot.message_handler(commands=['start'])
 def start(message):
