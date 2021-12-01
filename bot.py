@@ -77,27 +77,27 @@ def choose_clothes(weather):
     :return: the message for the user - what to wear
     """
 
-    if is_snowy(weather):
+        if is_snowy(weather):
         return "It's  snowy! do you want to build a snowman?"
     elif is_cold_and_rainy(weather):
-        return "It's cold and rainy, take a coat with at least one layer " \
+        return "It's cold and rainy, take a coat with at least one warm layer " \
                "underneath"
+    elif is_rainy(weather):
+        return "It's rainy, take a coat!"
     elif is_freezy(weather):
         return "It's freezy out there, heavy coat with two layers minimum!"
     elif is_cold(weather):
         return "Its really cold outside, consider wear a long shirt with a sweater above. " \
-               "If you tend to suffer from cold, consider wear extra layer"
+               "If you tend to suffer from cold weather, consider wear extra layer"
     elif is_chilly(weather):
-        return "I'd say it's a little bit chilly outside, long shirt will do. " \
+        return "I'd say it's a little bit chilly outside, but long shirt will do. " \
                "if you tend to suffer from cold weather, consider wear a light hoodie on top of it"
     elif is_warm(weather):
         return "It's warm, pants and T-shirt will fit. if you tend to suffer from hot weather, " \
-               "consider even going with shorts!"
+               "consider going with shorts!"
     elif is_hot(weather):
-        return "It's hot outside, it's time for tank top and shorts!"
-    else:  # unnecessary - temp check in prev funcs covers all options
-        return "Undefined weather, consider wearing layers so you could " \
-               "take them off if necessary"
+        return "It's really hot outside, it's time for tank top and shorts!"
+#     no else needed thanks to temp check that covers all cases
 
 @bot.message_handler(commands=['start'])
 def start(message):
